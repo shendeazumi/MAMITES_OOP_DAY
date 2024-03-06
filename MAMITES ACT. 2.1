@@ -1,0 +1,45 @@
+package com.mycompany.student;
+public class Student {
+    private String firstName;
+    private String lastName;
+    private int age;
+    private boolean isMinor;
+    
+    public Student(String firstName, String lastName, int age){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.isMinor = age < 18;
+    }
+    public void setName(String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    public void setAge(int age){
+        this.age = age;
+        this.isMinor = age < 18;
+    }
+    public String getName(){
+        this.isMinor = this.age < 18;
+        return this.firstName + " " + this.lastName;
+    }
+    
+    @Override 
+    public String toString(){
+        String status = this.isMinor ? "minor" : "adult";
+        return this.lastName + ", " + this.firstName + " - " + this.age + " - " + status;
+    }
+    public static void main(String[] args){
+        // Test the Student class
+        Student student1 = new Student ("Jemar Jude", "Marangga", 17);
+        System.out.println("Test Case 1: Student under 18");
+        System.out.println(student1.toString());
+        
+        student1.setAge(18);
+        System.out.println("Test Case 2: Increase age of student1");
+        System.out.println(student1.toString());
+        
+        Student student2 = new Student("Jose", "Cruz", 19);
+        System.out.println(student2.toString());
+    }
+}
