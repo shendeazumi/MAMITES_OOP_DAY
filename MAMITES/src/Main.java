@@ -1,18 +1,23 @@
 
+import java.util.Scanner;
+
+
 public class Main {
 
-    private static int editorType;
-    private static String initialText;
     public static void main(String[] args) {
-        
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter initial text:");
+        String initialText = scanner.nextLine();
+        System.out.println("Choose editor type (1 for Print, 2 for Advanced):");
+        int editorType = scanner.nextInt();
         TextEditor editor;
-        if (editorType == 1) {
-            editor = new PrintTextEditor(initialText);
-        } else {
+
+        if (editorType == 2) {
             editor = new AdvancedTextEditor(initialText);
+        } else {
+            editor = new PrintTextEditor(initialText);
         }
-        editor.append("def");
-        editor.delete(3);
-        editor.undo();
+
+        Tester.test(editor);
     }
 }

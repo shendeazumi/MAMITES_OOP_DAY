@@ -1,7 +1,8 @@
 
 public class PrintTextEditor extends TextEditor {
-    public PrintTextEditor(String initialText) {
-        super(initialText);
+
+    public PrintTextEditor(String text) {
+        super(text);
     }
 
     public void print() {

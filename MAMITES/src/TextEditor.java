@@ -1,9 +1,10 @@
 
 public class TextEditor {
+
     private String text;
 
-    public TextEditor(String initialText) {
-        this.text = initialText;
+    public TextEditor(String text) {
+        this.text = text;
     }
 
     public String getText() {
@@ -15,16 +16,12 @@ public class TextEditor {
     }
 
     public void append(String newText) {
-        this.text += newText;
+        text += newText;
     }
 
     public void delete(int n) {
-        if (n <= text.length()) {
-            this.text = this.text.substring(0, this.text.length() - n);
+        if (n >= 0 && n <= text.length()) {
+            this.text = this.text.substring(0, text.length() - n);
         }
-    }
-
-    void undo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

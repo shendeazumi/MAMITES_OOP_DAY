@@ -1,25 +1,29 @@
 
+import java.util.Stack;
 public class AdvancedTextEditor extends TextEditor {
-    private String previousText;
 
-    public AdvancedTextEditor(String initialText) {
-        super(initialText);
-        this.previousText = initialText;
+    private final Stack<String> history;
+
+    public AdvancedTextEditor(String text) {
+        super(text);
+        history = new Stack<>();
     }
 
     public void undo() {
-        setText(previousText);
+        if (!history.isEmpty()) {
+            setText(history.pop());
+        }
     }
 
     @Override
     public void append(String newText) {
-        previousText = getText();
+        history.push(getText());
         super.append(newText);
     }
 
     @Override
     public void delete(int n) {
-        previousText = getText();
+        history.push(getText());
         super.delete(n);
     }
 }
